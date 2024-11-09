@@ -1,8 +1,9 @@
+use alloc::vec;
+use alloc::vec::Vec;
+use core::convert::{TryFrom, TryInto};
+use core::slice::{Iter, IterMut};
 #[cfg(feature = "serde")]
 use serde::{Deserialize, Serialize};
-use std::convert::{TryFrom, TryInto};
-use std::slice::{Iter, IterMut};
-use std::vec;
 use thiserror::Error;
 
 /// Non-empty Vec bounded with minimal (L - lower bound) and maximal (U - upper bound) items quantity
@@ -463,7 +464,7 @@ mod arbitrary {
 #[allow(clippy::unwrap_used)]
 #[cfg(test)]
 mod tests {
-    use std::convert::TryInto;
+    use core::convert::TryInto;
 
     use super::*;
 
@@ -597,6 +598,7 @@ mod tests {
 mod arb_tests {
 
     use super::*;
+    use alloc::format;
     use proptest::prelude::*;
 
     proptest! {
